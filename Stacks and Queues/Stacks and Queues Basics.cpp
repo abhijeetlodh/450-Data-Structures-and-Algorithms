@@ -1,0 +1,114 @@
+/******************************************************************************
+
+
+Abhijeet Lodh solving Stacks and Queues from Love Babbar 450 DSA Sheet
+Question: Stacks and Queues Basics
+
+*******************************************************************************/
+#include <iostream>
+using namespace std;
+#define n 100
+
+class queue{
+    int* arr;
+    int front;
+    int back;
+    public:
+    queue(){
+        arr = new int[n];
+        front=-1;
+        back=-1;
+    }
+    void push(int x){
+        if(back==n-1){
+            cout<<"Queue overflow"<<endl;
+            return;
+        }
+        back++;
+        arr[back] = x;
+        if(front==-1){
+            front++;
+        }
+    }
+    void pop(){
+        if(front==-1 || front>back){
+            cout<<"No Elements in Queue"<<endl;
+            return;
+        }
+        front++;
+    }
+  int peek(){
+        if(front==-1 || front>back){
+            cout<<"No Elements in Queue"<<endl;
+            return -1;
+        }
+        return arr[front];
+    }
+    bool empty(){
+        if(front==-1 || front>back){
+            cout<<"No Elements in Queue"<<endl;
+            return true;
+        }
+        return false;
+    }
+};
+
+class stack{
+    int* arr;
+    int top;
+    public:
+    stack(){
+        arr = new int[n];
+        top = -1;
+    }
+    void push(int x){
+        if(top==n-1){
+            cout<<"Stack Overflow"<<endl;
+            return;
+        }
+        top++;
+        arr[top]=x;
+    }
+    void pop(){
+        if(top==-1)
+        {cout<<"No Elements to Pop" << endl;
+        return;}
+        top--;
+    }
+    int Top(){
+        
+       if(top==-1)
+        {cout<<"No Elements to Pop" << endl;
+        return-1;}
+        return arr[top];
+    }
+    bool empty()
+    {
+        return top==-1;
+    }
+
+};
+int main()
+{
+stack st;
+queue q;
+st.push(1);
+st.push(2);
+st.push(3);
+q.push(1);
+q.push(2);
+q.push(3);
+st.pop();
+st.pop();
+st.pop();
+cout << st.Top()<<endl;;
+cout << st.empty()<<endl;;
+cout << q.peek() <<endl;
+q.pop();
+cout << q.peek() <<endl;
+q.pop();
+cout << q.peek() <<endl;
+q.pop();
+cout << q.empty() <<endl;
+return 0;
+}
